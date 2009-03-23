@@ -56,6 +56,17 @@ module RVideo # :nodoc:
           log_temp_file_name = "/tmp/transcode_output_#{Time.now.to_i}.txt"
     
           final_command = "#{@command} 2>#{log_temp_file_name}"
+
+          # nice the command if option :nice was given
+          # accepts a number 1..19 (nice value) or anything evaluating to true
+          if @options.has_key? :nice
+            if (1..19) === @options[:nice]
+              final_command = "nice -n#{@options[:nice]} #{final_command}"
+            elsif @options[:nice]
+              final_command = "nice #{final_command}"
+            end
+          end
+
           RVideo.logger.info("\nExecuting Command: #{final_command}\n")
           do_execute final_command
       

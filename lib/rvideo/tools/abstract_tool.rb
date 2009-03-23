@@ -59,11 +59,13 @@ module RVideo # :nodoc:
 
           # nice the command if option :nice was given
           # accepts a number 1..19 (nice value) or anything evaluating to true
-          if @options.has_key? :nice
-            if (1..19) === @options[:nice]
-              final_command = "nice -n#{@options[:nice]} #{final_command}"
-            elsif @options[:nice]
-              final_command = "nice #{final_command}"
+          unless RUBY_PLATFORM.downcase.include?("mswin")
+            if @options.has_key? :nice
+              if (1..19) === @options[:nice]
+                final_command = "nice -n#{@options[:nice]} #{final_command}"
+              elsif @options[:nice]
+                final_command = "nice #{final_command}"
+              end
             end
           end
 

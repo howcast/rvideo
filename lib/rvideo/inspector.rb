@@ -457,6 +457,8 @@ module RVideo # :nodoc:
     
     FPS = 'fps(?:\(r\))?'
     
+	# FIXME tbn/tbc may need braced alternatives, too: tb(n) / tb(c) - not tested
+	# not fixing as of yet because it renumbers backrefs
     VIDEO_MATCH_PATTERN = /
       Stream\s*(\#[\d.]+)(?:[\(\[].+?[\)\]])?\s*                # stream id
       [,:]\s*                                                   
@@ -468,7 +470,7 @@ module RVideo # :nodoc:
         (?:\s*\[(?:PAR\s*(\d+:\d+))?\s*(?:DAR\s*(\d+:\d+))?\])? # pixel and display aspect ratios
         #{SEP}?
       (?:#{RATE}\s*(kb\/s)#{SEP}?)?                             # video bit rate
-      (?:#{RATE}\s*(?:tbr|#{FPS})#{SEP}?)?                      # frame rate
+      (?:#{RATE}\s*(?:tbr|tb\(r\)|#{FPS})#{SEP}?)?              # frame rate
       (?:#{RATE}\s*tbn#{SEP}?)?                                 # time base
       (?:#{RATE}\s*tbc#{SEP}?)?                                 # codec time base
     /x

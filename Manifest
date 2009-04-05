@@ -20,8 +20,8 @@ lib/rvideo/tools/mencoder.rb
 lib/rvideo/tools/mp4box.rb
 lib/rvideo/tools/mp4creator.rb
 lib/rvideo/tools/mplayer.rb
-lib/rvideo/tools/yamdi.rb
 lib/rvideo/tools/qtfaststart.rb
+lib/rvideo/tools/yamdi.rb
 lib/rvideo/transcoder.rb
 lib/rvideo/version.rb
 lib/rvideo.rb
@@ -58,10 +58,10 @@ spec/units/mencoder_spec.rb
 spec/units/mp4box_spec.rb
 spec/units/mp4creator_spec.rb
 spec/units/mplayer_spec.rb
+spec/units/qtfaststart_spec.rb
 spec/units/string_spec.rb
 spec/units/transcoder_spec.rb
 tasks/deployment.rake
 tasks/testing.rake
 tasks/transcoding.rake
 tasks/website.rake
-tmp/kites.flv

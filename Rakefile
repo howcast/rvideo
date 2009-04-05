@@ -35,7 +35,17 @@ Echoe.new NAME do |p|
   p.runtime_dependencies     = ["activesupport"]
   p.development_dependencies = ["rspec"]
   
-  p.ignore_pattern = ["website/**/*"]
+  p.ignore_pattern = [
+    "spec/files/boat.mpg",
+    "spec/files/dinner.3g2",
+    "spec/files/foo $ bar & baz",
+    "spec/files/hats.3gp",
+    "spec/files/quads.wmv",
+    "spec/files/sword.3gp",
+    "website/**/*",
+    "tmp/**/*",
+    "scripts/test_progress.rb"
+  ]
   
   p.rdoc_options = [
     "--quiet",

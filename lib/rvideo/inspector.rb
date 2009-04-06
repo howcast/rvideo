@@ -78,12 +78,12 @@ module RVideo # :nodoc:
     
     # Returns true if the file can be read successfully. Returns false otherwise.
     def valid?
-      not (@unknown_format or @unreadable_file)
+      not invalid?
     end
     
     # Returns false if the file can be read successfully. Returns false otherwise.
     def invalid?
-      not valid?
+      @unknown_format or @unreadable_file
     end
     
     # True if the format is not understood ("Unknown Format")

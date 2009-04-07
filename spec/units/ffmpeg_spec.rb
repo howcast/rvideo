@@ -250,7 +250,7 @@ module RVideo
     end
     
     context Ffmpeg, "result parsing should raise an exception" do
-      setup do
+      before do
         setup_ffmpeg_spec
         @results = load_fixture :ffmpeg_results
       end

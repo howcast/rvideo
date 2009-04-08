@@ -1,6 +1,6 @@
 simple_flv: |
   ffmpeg -i $input_file$ -ar 22050 -ab 64 -f flv -r 29.97 -s $resolution$ -y $temp_file$
-  flvtool2 -U $temp_file$ $output_file$
+#  flvtool2 -U $temp_file$ $output_file$
 simple_avi: |
   ffmpeg -i $input_file$ -ar 44100 -ab 64 -vcodec xvid -acodec mp3 -r 29.97 -s $resolution$ -y $output_file$
 
@@ -39,13 +39,13 @@ flash_700:
   command: |
     ffmpeg -y -i $input_file$ -f flv -b 700k -ab 80k -acodec libmp3lame -r 15 -ar 22050 -ac 2 -psnr -pass 1 -passlogfile $output_file$.log -s 480x360 $output_file$
     ffmpeg -y -i $input_file$ -f flv -b 700k -ab 80k -acodec libmp3lame -r 15 -ar 22050 -ac 2 -psnr -pass 2 -passlogfile $output_file$.log -s 480x360 $output_file$
-    flvtool2 -U $output_file$
+#    flvtool2 -U $output_file$
 flash_300:
   extension: 'flv'
   command: |
     ffmpeg -y -i $input_file$ -f flv -b 300k -ab 64k -acodec libmp3lame -r 15 -ar 22050 -ac 2 -psnr -pass 1 -passlogfile $output_file$.log -s 320x240 $output_file$
     ffmpeg -y -i $input_file$ -f flv -b 300k -ab 64k -acodec libmp3lame -r 15 -ar 22050 -ac 2 -psnr -pass 2 -passlogfile $output_file$.log -s 320x240 $output_file$
-    flvtool2 -U $output_file$
+#    flvtool2 -U $output_file$
 qt_500:
   extension: 'mov'
   command: |

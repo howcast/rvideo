@@ -15,7 +15,7 @@ describe FrameCapturer, "calculating offset from a timecode argument" do
   end
   
   it "should calculate a timecode, when given a frame" do
-    @file.inspector.fps.should == "10"
+    @file.inspector.fps.should == "10.00"
     @file.calculate_time("10f").should be_close(1.0, 0.1)
     @file.calculate_time("27.6f").should be_close(2.76, 0.1)
     

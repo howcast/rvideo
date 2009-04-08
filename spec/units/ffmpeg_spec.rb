@@ -155,22 +155,20 @@ module RVideo
         ffmpeg = Ffmpeg.new("ffmpeg -i $input_file$ $video_quality$ -y $output_file$", @options)
         ffmpeg.command.should == "ffmpeg -i '#{@options[:input_file]}' -b 666k -crf 18 -flags +loop -cmp +sad -partitions +parti4x4+partp8x8+partb8x8 -flags2 +mixed_refs -me full -subq 6 -trellis 1 -refs 3 -bf 3 -b_strategy 1 -coder 1 -me_range 16 -g 250 -keyint_min 25 -sc_threshold 40 -i_qfactor 0.71 -y '#{@options[:output_file]}'"
       end
-      
-      # These appear unsupported..
-      # 
-      # it 'should support passthrough height' do
-      #   options = {:input_file => spec_file("kites.mp4"), :output_file => "bar", :width => "640"}
-      #   command = "ffmpeg -i $input_file$ -ar 44100 -ab 64 -vcodec xvid -acodec libmp3lame -r 29.97 $resolution$ -y $output_file$"
-      #   ffmpeg = Ffmpeg.new(command, options)
-      #   ffmpeg.command.should == "ffmpeg -i '#{options[:input_file]}' -ar 44100 -ab 64 -vcodec xvid -acodec libmp3lame -r 29.97 -s 640x720 -y 'bar'"        
-      # end
-      # 
-      # it 'should support passthrough width' do
-      #   options = {:input_file => spec_file("kites.mp4"), :output_file => "bar", :height => "360"}
-      #   command = "ffmpeg -i $input_file$ -ar 44100 -ab 64 -vcodec xvid -acodec libmp3lame -r 29.97 $resolution$ -y $output_file$"
-      #   ffmpeg = Ffmpeg.new(command, options)
-      #   ffmpeg.command.should == "ffmpeg -i '#{options[:input_file]}' -ar 44100 -ab 64 -vcodec xvid -acodec libmp3lame -r 29.97 -s 1280x360 -y 'bar'"        
-      # end
+
+      it "should support passthrough scaled and rounded height" do
+        options = {:input_file => spec_file("kites.mp4"), :output_file => "bar", :width => "640"}
+        command = "ffmpeg -i $input_file$ -ar 44100 -ab 64 -vcodec xvid -acodec libmp3lame -r 29.97 $resolution$ -y $output_file$"
+        ffmpeg = Ffmpeg.new(command, options)
+        ffmpeg.command.should == "ffmpeg -i '#{options[:input_file]}' -ar 44100 -ab 64 -vcodec xvid -acodec libmp3lame -r 29.97 -s 640x528 -y 'bar'"
+      end
+
+      it "should support passthrough scaled and rounded width" do
+        options = {:input_file => spec_file("kites.mp4"), :output_file => "bar", :height => "360"}
+        command = "ffmpeg -i $input_file$ -ar 44100 -ab 64 -vcodec xvid -acodec libmp3lame -r 29.97 $resolution$ -y $output_file$"
+        ffmpeg = Ffmpeg.new(command, options)
+        ffmpeg.command.should == "ffmpeg -i '#{options[:input_file]}' -ar 44100 -ab 64 -vcodec xvid -acodec libmp3lame -r 29.97 -s 448x360 -y 'bar'"
+      end
     end
     
     describe Ffmpeg, " when parsing a result" do

@@ -46,7 +46,7 @@ module RVideo
     
     context Mencoder, " result parsing should raise an exception" do
       
-      setup do
+      before do
         setup_mencoder_spec
       end
       

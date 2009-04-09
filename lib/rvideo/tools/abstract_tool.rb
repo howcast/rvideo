@@ -33,7 +33,7 @@ module RVideo # :nodoc:
           end
         end
     
-        abstract_attribute_formatter :resolution, :fps,
+        abstract_attribute_formatter :resolution, :deinterlace, :fps,
           :video_bit_rate, :video_bit_rate_tolerance,
           :video_bit_rate_min, :video_bit_rate_max,
           :audio_channels, :audio_bit_rate, :audio_sample_rate
@@ -131,11 +131,19 @@ module RVideo # :nodoc:
     
         ###
         # Resolution
-    
+
+        def deinterlace
+          format_deinterlace(get_deinterlace)
+        end
+
+        def get_deinterlace
+          { :deinterlace => @options['deinterlace'] ? true : false }
+        end
+
         def resolution
           format_resolution(get_resolution)
         end
-    
+
         def get_resolution
           inspect_original if @original.nil?
       
@@ -156,7 +164,7 @@ module RVideo # :nodoc:
             end
           end
         end
-    
+
         def get_fit_to_width_resolution
           w = @options['width']
       

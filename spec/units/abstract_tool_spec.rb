@@ -81,13 +81,13 @@ module RVideo
         }.should raise_error(TranscoderError::ParameterError)
       end
       
-      it "the should raise an error when a recipe includes a variable not supplied (2)" do
+      it "should raise an error when a recipe includes a variable not supplied (2)" do
         lambda {
           ffmpeg = Ffmpeg.new(@simple_avi + " $novar$", @options)
         }.should raise_error(TranscoderError::ParameterError)
       end
       
-      it "the should not raise an error when a variable is supplied but nil" do
+      it "should not raise an error when a variable is supplied but nil" do
         ffmpeg = Ffmpeg.new(@simple_avi, @options.merge(:resolution => nil))
         ffmpeg.command.should == "ffmpeg -i '#{@options[:input_file]}' -ar 44100 -ab 64 -vcodec xvid -acodec mp3 -r 29.97 -y '#{@options[:output_file]}'"
       end

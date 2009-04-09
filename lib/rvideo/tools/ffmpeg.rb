@@ -51,6 +51,10 @@ module RVideo
         'ffmpeg'
       end
       
+      def format_deinterlace(params={})
+        params[:deinterlace] ? "-deinterlace" : ""
+      end
+
       def format_fps(params={})
         "-r #{params[:fps]}"
       end

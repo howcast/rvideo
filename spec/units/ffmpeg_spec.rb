@@ -111,6 +111,18 @@ module RVideo
         ffmpeg = Ffmpeg.new("ffmpeg -i $input_file$ $video_bit_rate$ $video_bit_rate_min$ $video_bit_rate_max$ -y $output_file$", @options)
         ffmpeg.command.should == "ffmpeg -i '#{@options[:input_file]}' -b 666k -minrate 666k -maxrate 666k -y '#{@options[:output_file]}'"
       end
+
+      it "supports :deinterlace => true" do
+        @options.merge! :deinterlace => true
+        ffmpeg = Ffmpeg.new("ffmpeg -i $input_file$ $deinterlace$ -y $output_file$", @options)
+        ffmpeg.command.should == "ffmpeg -i '#{@options[:input_file]}' -deinterlace -y '#{@options[:output_file]}'"
+      end
+
+      it "handles :deinterlace => false correct" do
+        @options.merge! :deinterlace => false
+        ffmpeg = Ffmpeg.new("ffmpeg -i $input_file$ $deinterlace$ -y $output_file$", @options)
+        ffmpeg.command.should == "ffmpeg -i '#{@options[:input_file]}'  -y '#{@options[:output_file]}'"
+      end
       
       ###
       

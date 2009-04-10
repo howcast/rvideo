@@ -57,6 +57,18 @@ module RVideo
       it "should ignore extra options (not needed by the recipe)" do
         Ffmpeg.new(@simple_avi, @options.merge(:foo => "bar"))
       end
+
+      # FIXME This won't work here as final_command is not exposed to the testing framework and it will work different on mswin32 if not at all - needs fixing
+      #
+      #it "should be nice if given :nice => true" do
+      #  ffmpeg = Ffmpeg.new(@simple_avi, @options.merge(:nice => true))
+      #  ffmpeg.command.should == "nice ffmpeg -i '#{@options[:input_file]}' -ar 44100 -ab 64 -vcodec xvid -acodec mp3 -r 29.97 -y '#{@options[:output_file]}'"
+      #end
+      #
+      #it "should be nice if given an arbitrary :nice value" do
+      #  ffmpeg = Ffmpeg.new(@simple_avi, @options.merge(:nice => 12))
+      #  ffmpeg.command.should == "nice -n12 ffmpeg -i '#{@options[:input_file]}' -ar 44100 -ab 64 -vcodec xvid -acodec mp3 -r 29.97 -y '#{@options[:output_file]}'"
+      #end
       
       it "should interpolate variables successfully" do
         ffmpeg = Ffmpeg.new(@simple_avi, @options)

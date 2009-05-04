@@ -120,6 +120,15 @@ module RVideo
         "-ar #{params[:sample_rate]}"
       end
       
+      def get_resolution
+        if @options['resolution'] && @options['resolution'].match(/(\d+)x(\d+)/)
+          options['width'] = $1
+          options['height'] = $2
+          get_specific_resolution
+        else
+          super
+        end
+      end
       
       private
       

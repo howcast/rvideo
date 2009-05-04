@@ -50,7 +50,7 @@ module RVideo
       
       @offset, @rate, @limit, @output = parse_options options
       
-      @command = "ffmpeg -i #{@input.shell_quoted} -ss #{@offset} -r #{@rate} #{@output.shell_quoted}"
+      @command = "ffmpeg -i #{@input.shell_quoted} -ss #{@offset} -r #{@rate} -f image2 -vframes 1 #{@output.shell_quoted}"
     end
     
     def capture!
@@ -58,7 +58,9 @@ module RVideo
       frame_result = `#{@command} 2>&1`
       RVideo.logger.info("\nScreenshot results: #{frame_result}")
     
-      Dir[File.expand_path(@output).sub("%d", "*")].entries
+      # TODO: Fix
+      #Dir[File.expand_path(@output).sub("%d", "*")].entries
+      [@output]
     end
   
     VALID_TIMECODE_FORMAT = /\A([0-9.,]*)(s|f|%)?\Z/

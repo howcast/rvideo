@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 
 module RVideo
   describe Inspector, "with boat.avi" do
-    setup do
+    before :each do
       @i = Inspector.new :file => spec_file("boat.avi")
     end
     
@@ -97,7 +97,7 @@ module RVideo
   end
   
   describe Inspector, "with kites.mp4" do
-    setup do
+    before :each do
       @i = Inspector.new :file => spec_file("kites.mp4")
     end
     

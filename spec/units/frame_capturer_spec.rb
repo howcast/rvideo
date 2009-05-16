@@ -15,7 +15,7 @@ describe FrameCapturer, "calculating offset from a timecode argument" do
   end
   
   it "should calculate a timecode, when given a frame" do
-    @file.inspector.fps.should == "10.00"
+    @file.inspector.fps.should == "10"
     @file.calculate_time("10f").should be_close(1.0, 0.1)
     @file.calculate_time("27.6f").should be_close(2.76, 0.1)
     
@@ -49,7 +49,7 @@ describe FrameCapturer, "calculating offset from a timecode argument" do
   it "captures one frame at the start with no arguments" do
     f = FrameCapturer.new :input => spec_file('kites.mp4')
     assert_equal \
-      %{ffmpeg -i '#{f.input}' -ss 0 -r 1 '#{f.output}'},
+      %{ffmpeg -i '#{f.input}' -ss 0 -r 1 -f image2 -vframes 1 '#{f.output}'},
       f.command
   end
   
@@ -57,7 +57,7 @@ describe FrameCapturer, "calculating offset from a timecode argument" do
     f = FrameCapturer.new :input => spec_file('kites.mp4'),
       :offset => 10
     assert_equal \
-      %{ffmpeg -i '#{f.input}' -ss 10.0 -r 1 '#{f.output}'},
+      %{ffmpeg -i '#{f.input}' -ss 10.0 -r 1 -f image2 -vframes 1 '#{f.output}'},
       f.command
   end
   
@@ -65,7 +65,7 @@ describe FrameCapturer, "calculating offset from a timecode argument" do
     f = FrameCapturer.new :input => spec_file('kites.mp4'),
       :interval => 5
     assert_equal \
-      %{ffmpeg -i '#{f.input}' -ss 0 -r 0.2 '#{f.output}'},
+      %{ffmpeg -i '#{f.input}' -ss 0 -r 0.2 -f image2 -vframes 1 '#{f.output}'},
       f.command
   end
 end

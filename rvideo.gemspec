@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rvideo}
-  s.version = "0.9.6.3"
+  s.version = "0.9.6.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Peter Boling, Jonathan Dahl (Slantwise Design), Seth Thomas Rasmussen, Kai Krakow"]
-  s.date = %q{2009-04-13}
+  s.date = %q{2009-05-08}
   s.description = %q{Inspect and transcode video and audio files.}
   s.email = %q{sethrasmussen@gmail.com}
   s.extra_rdoc_files = ["CHANGELOG", "lib/rvideo/errors.rb", "lib/rvideo/float.rb", "lib/rvideo/frame_capturer.rb", "lib/rvideo/inspector.rb", "lib/rvideo/reporter/views/index.html.erb", "lib/rvideo/reporter/views/report.css", "lib/rvideo/reporter/views/report.html.erb", "lib/rvideo/reporter/views/report.js", "lib/rvideo/reporter.rb", "lib/rvideo/string.rb", "lib/rvideo/tools/abstract_tool.rb", "lib/rvideo/tools/ffmpeg.rb", "lib/rvideo/tools/ffmpeg2theora.rb", "lib/rvideo/tools/flvtool2.rb", "lib/rvideo/tools/mencoder.rb", "lib/rvideo/tools/mp4box.rb", "lib/rvideo/tools/mp4creator.rb", "lib/rvideo/tools/mplayer.rb", "lib/rvideo/tools/qtfaststart.rb", "lib/rvideo/tools/yamdi.rb", "lib/rvideo/transcoder.rb", "lib/rvideo/version.rb", "lib/rvideo.rb", "LICENSE", "README", "tasks/deployment.rake", "tasks/testing.rake", "tasks/transcoding.rake", "tasks/website.rake"]
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--quiet", "--title", "rvideo documentation", "--opname", "index.html", "--line-numbers", "--main", "README", "--inline-source"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{rvideo}
-  s.rubygems_version = %q{1.3.1}
+  s.rubygems_version = %q{1.3.2}
   s.summary = %q{Inspect and transcode video and audio files.}
 
   if s.respond_to? :specification_version then

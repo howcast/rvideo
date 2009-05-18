@@ -81,6 +81,12 @@ module RVideo
         ffmpeg.command.should == "ffmpeg -i '#{@options[:input_file]}' -ar 44100 -ab 64 -vcodec xvid -acodec libmp3lame -r 29.97 -s 480x360 -y '#{@options[:output_file]}'"
       end
       
+      it 'supports :resolution' do
+        @options.merge! :resolution => "640x360"
+        ffmpeg = Ffmpeg.new("ffmpeg -i $input_file$ -ar 44100 -ab 64 -vcodec xvid -acodec libmp3lame -r 29.97 $resolution$ -y $output_file$", @options)
+        ffmpeg.command.should == "ffmpeg -i '#{@options[:input_file]}' -ar 44100 -ab 64 -vcodec xvid -acodec libmp3lame -r 29.97 -s 640x360 -y '#{@options[:output_file]}'"
+      end
+      
       ###
       
       it 'supports :video_bit_rate' do

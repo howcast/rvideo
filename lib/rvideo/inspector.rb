@@ -466,7 +466,7 @@ module RVideo # :nodoc:
       Video:\s*                                                   
       #{VAL}#{SEP}                                                # codec
       (?:#{VAL}#{SEP})?                                           # color space
-      (\d+)x(\d+)                                                 # resolution
+      (\d+)x(\d+)#{SEP}?                                          # resolution
         (?:\s*\[?(?:PAR\s*(\d+:\d+))?\s*(?:DAR\s*(\d+:\d+))?\]?)? # pixel and display aspect ratios
         #{SEP}?
       (?:#{RATE}\s*(kb\/s)#{SEP}?)?                               # video bit rate

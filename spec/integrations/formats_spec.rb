@@ -311,5 +311,19 @@ module RVideo
       # file.unknown_format?.should be_false
       # file.unreadable_file?.should be_true
     end  
+    
+    specify "'2 channels' for channels" do
+      file = Inspector.new(:raw_response => files(:channels))
+      file.container.should == "aiff"
+      file.raw_duration.should == "00:01:19.78"
+      file.duration.should == 79780
+      file.bitrate.should == 1536
+      file.bitrate_units.should == "kb/s"
+      file.audio_stream_id.should == "#0.0"
+      file.audio_codec.should == "pcm_s16be"
+      file.audio_sample_rate.should == 48000
+      file.audio_sample_units.should == "Hz"
+      file.audio_channels_string.should == "2 channels"
+    end
   end
 end

@@ -396,3 +396,22 @@ failing_ogg:
       Duration: N/A, start: 0.000000, bitrate: N/A
       Stream #0.0: Audio: vorbis, 44100 Hz, stereo
     Must supply at least one output file
+channels:
+  response: |
+    FFmpeg version git-cf1908e, Copyright (c) 2000-2010 the FFmpeg developers
+      built on Nov  3 2010 12:47:59 with gcc 4.1.2 (Gentoo 4.1.2 p1.1)
+      configuration: --enable-postproc --enable-pthreads --enable-gpl --enable-x11grab --enable-nonfree --enable-shared --enable-libvpx --enable-libx264 --enable-libxvid --enable-libfaac --enable-libmp3lame --enable-libvorbis
+      libavutil     50.32. 5 / 50.32. 5
+      libavcore      0.12. 0 /  0.12. 0
+      libavcodec    52.94. 3 / 52.94. 3
+      libavformat   52.84. 0 / 52.84. 0
+      libavdevice   52. 2. 2 / 52. 2. 2
+      libavfilter    1.54. 0 /  1.54. 0
+      libswscale     0.12. 0 /  0.12. 0
+      libpostproc   51. 2. 0 / 51. 2. 0
+    [aiff @ 0x806a560] max_analyze_duration reached
+    Input #0, aiff, from 'sfx.aifc':
+      Duration: 00:01:19.78, start: 0.000000, bitrate: 1536 kb/s
+        Stream #0.0: Audio: pcm_s16be, 48000 Hz, 2 channels, s16, 1536 kb/s
+    At least one output file must be specified
+    

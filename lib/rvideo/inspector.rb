@@ -445,7 +445,7 @@ module RVideo # :nodoc:
       Audio:\s+
       #{VAL}#{SEP}           # codec
       #{RATE}\s+(\w*)#{SEP}? # sample rate
-      ([a-zA-Z:]*)#{SEP}?    # channels
+      ([1-9 a-zA-Z:]*)#{SEP}? # channels
       (?:s(\d+)#{SEP}?)?     # audio sample bit depth
       (?:(\d+)\s+(\S+))?     # audio bit rate
     /x
